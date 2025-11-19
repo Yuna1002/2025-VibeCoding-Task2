@@ -167,6 +167,11 @@
         border: 1px solid rgba(255, 255, 255, 0.06);
         color: #cfe8ff;
       }
+      .btn:hover,
+      .btn:focus {
+        filter: brightness(1.05);
+        transform: translateY(-1px);
+      }
       .hero-visual {
         margin-top: 0.75rem;
         border-radius: 10px;
@@ -196,11 +201,57 @@
       .about-bio {
         color: #d4e9ff;
         opacity: 0.95;
+        margin-top: 0;
+        margin-bottom: 0.75rem;
+        font-size: 0.98rem;
+      }
+      .about-lead {
+        margin-top: 0.25rem;
+        margin-bottom: 0.75rem;
+        color: #cfe8ff;
+        opacity: 0.95;
+      }
+      .about-list {
+        margin: 0.5rem 0 1rem 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 0.5rem;
+      }
+      .about-list li {
+        position: relative;
+        padding-left: 1.6rem;
+        color: #dfefff;
+        font-size: 0.97rem;
+      }
+      .about-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #6ec1ff;
+        font-weight: 700;
       }
       .about-visual {
         border-radius: 8px;
         overflow: hidden;
         border: 1px solid rgba(255, 255, 255, 0.03);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.01),
+          transparent
+        );
+      }
+      .about-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .about-actions {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        margin-top: 0.5rem;
       }
       /* CSS:ABOUT-END */
 
@@ -275,6 +326,11 @@
         .about-grid {
           grid-template-columns: 1fr 360px;
           align-items: start;
+        }
+        .about-visual {
+          /* 在較大畫面給右側圖片固定高度與 cover-like 呈現 */
+          align-self: start;
+          height: 100%;
         }
         .projects-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -366,28 +422,37 @@
           aria-labelledby="about-heading"
         >
           <div class="container about-grid">
-            <div>
-              <h2 id="about-heading" class="section-title">
-                關於我（之後會用 Section SDD 替換）
-              </h2>
+            <div class="about-meta">
+              <h2 id="about-heading" class="section-title">關於我</h2>
+
               <p class="about-bio">
-                這裡目前是 About
-                區的占位內容，未來會放詳細的自我介紹、經歷摘要與設計/開發理念。
+                我現在在做什麼 —
+                我是一位專職前端工程師，同時從事教學與接案工作。主要技術包含
+                JavaScript、TypeScript、Vue 3、Nuxt 3，以及 Web
+                性能優化與元件化設計。
               </p>
-              <p class="about-bio">
-                開發者提示：之後會用 Section SDD 的 Prompt 產生新的
-                section，請把新的 section 程式碼整段貼回來，完全取代這一區（置於
-                <!-- SECTION:ABOUT-START -->
-                與
-                <!-- SECTION:ABOUT-END -->
-                之間）。
+
+              <p class="about-lead">
+                一點背景與做事風格 —
+                我重視溝通與可維護性，喜歡把複雜的概念拆解成易懂的步驟與文件；教學讓我能把知識傳遞出去，也幫助我在開發中保持清晰的思路。
               </p>
+
+              <ul class="about-list" aria-label="我的強項">
+                <li>UI/元件設計與實作：建立易用、可重用的元件與設計系統。</li>
+                <li>響應式與可及性：確保不同裝置與使用者的良好體驗。</li>
+                <li>性能優化與除錯：從建構工具到 runtime 的整體優化與診斷。</li>
+              </ul>
+
+              <div class="about-actions" role="group" aria-label="關於我操作">
+                <a class="btn" href="#projects">查看作品集</a>
+                <a class="btn secondary" href="#contact">聯絡我</a>
+              </div>
             </div>
 
-            <div class="about-visual">
+            <div class="about-visual" aria-hidden="false">
               <img
-                src="https://images.unsplash.com/photo-1629904853716-f0bc54eea481?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="工作空間與筆電示意圖"
+                src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+                alt="專注於筆電前寫程式的工程師，桌上有筆記與咖啡"
                 loading="lazy"
               />
             </div>
